@@ -9,4 +9,10 @@ renderer.setSize(window.innerWidth, window.innerHeight)
 
 document.body.appendChild(renderer.domElement)
 
+var geometry = new THREE.BoxGeometry(1, 1, 1); 
+var material = new THREE.MeshLambertMaterial({color: 0xFFCC00}); 
+var cube1 = new THREE.Mesh(geometry, material);
+cube1.rotation.y = 45;
+scene.add(cube1);
+
 renderer.render(scene, camera)
