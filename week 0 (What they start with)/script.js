@@ -15,4 +15,8 @@ var cube1 = new THREE.Mesh(geometry, material);
 cube1.rotation.y = 45;
 scene.add(cube1);
 
+var light = new THREE.PointLight(new THREE.Color("white"), 1, 500)
+light.position.set(10, 12, 25)
+scene.add(light)
+
 renderer.render(scene, camera)
