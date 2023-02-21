@@ -9,6 +9,7 @@ renderer.setSize(window.innerWidth, window.innerHeight)
 
 document.body.appendChild(renderer.domElement)
 
+
 var geometry = new THREE.BoxGeometry(1, 1, 1)
 var material = new THREE.MeshLambertMaterial({color: 0xFFCC00})
 var cube1 = new THREE.Mesh(geometry, material)
@@ -19,4 +20,46 @@ var light = new THREE.PointLight(new THREE.Color("white"), 1, 500)
 light.position.set(10, 12, 25)
 scene.add(light)
 
-renderer.render(scene, camera)
+var geometry = new THREE.BoxGeometry(1, 1, 1); 
+var material = new THREE.MeshLambertMaterial({color: 0xFFCC00}); 
+var cube1 = new THREE.Mesh(geometry, material);
+cube1.rotation.y = 45;
+scene.add(cube1);
+
+
+var render = function() {
+    requestAnimationFrame(render);
+    renderer.render(scene, camera); 
+}
+
+render();
+
+
+
+
+document.body.requestPointerLock = document.body.requestPointerLock ||
+                                    document.body.mozRequestPointerLock;
+        document.exitPointerLock = document.exitPointerLock ||
+                                   document.mozExitPointerLock;
+        document.body.onclick = function() {
+          document.body.requestPointerLock();
+        };
+
+
+document.body.onmousemove = function(evt) {
+    camera.rotation.y-=evt.movementX/65;
+  };
+
+
+document.body.onkeydown = function(evt){
+    if(evt.keyCode==38){
+        var direction = new THREE.Vector3();
+        camera.getWorldDirection(direction);
+        camera.position.add(direction)
+    }
+    if(evt.keyCode==40){
+        var direction = new THREE.Vector3();
+        camera.getWorldDirection(direction);
+        camera.position.sub(direction)
+    }
+}
