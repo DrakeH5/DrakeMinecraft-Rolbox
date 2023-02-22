@@ -27,7 +27,23 @@ cube1.rotation.y = 45;
 scene.add(cube1);
 
 
+var geometry = new THREE.BoxGeometry(30, 1, 30); 
+var material = new THREE.MeshLambertMaterial({color: 0xFFCC00}); 
+var ground = new THREE.Mesh(geometry, material);
+ground.position.y = -1
+scene.add(ground);
+
+var gravity = 0.2;
+var downDirection = new THREE.Vector3(0, -1, 0)
+var raycaster = new THREE.Raycaster()
 var render = function() {
+    raycaster.set(camera.position, downDirection);
+    const intersects = raycaster.intersectObjects(scene.children)
+    if(intersects.length>0){
+        if(intersects[0].distance>1){
+        camera.position.y-=gravity;
+        }
+    }
     requestAnimationFrame(render);
     renderer.render(scene, camera); 
 }
@@ -56,10 +72,15 @@ document.body.onkeydown = function(evt){
         var direction = new THREE.Vector3();
         camera.getWorldDirection(direction);
         camera.position.add(direction)
+        camera.position.add(direction)
     }
     if(evt.keyCode==40){
         var direction = new THREE.Vector3();
         camera.getWorldDirection(direction);
         camera.position.sub(direction)
     }
+    if(evt.keyCode==32) { //jump
+        this.camera = camera;
+        this.camera.position.y+=1;
+      }
 }
