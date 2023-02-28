@@ -26,6 +26,7 @@ var cube1 = new THREE.Mesh(geometry, material);
 cube1.rotation.y = 45;
 scene.add(cube1);
 
+<<<<<<< HEAD
 
 var geometry = new THREE.BoxGeometry(30, 1, 30); 
 var material = new THREE.MeshLambertMaterial({color: 0xFFCC00}); 
@@ -84,3 +85,10 @@ document.body.onkeydown = function(evt){
         this.camera.position.y+=1;
       }
 }
+=======
+var light = new THREE.PointLight(new THREE.Color("white"), 1, 500)
+light.position.set(10, 12, 25)
+scene.add(light)
+
+renderer.render(scene, camera)
+>>>>>>> 0898adee332db5a49f5b2f1ae7cbf5684d4dc16d
