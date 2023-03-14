@@ -1,3 +1,12 @@
+const socket = io("ws://204.110.223.239:8080")
+
+var clientRefreshRate = 10
+
+setInterval(function(){
+    socket.emit("gameDataFromHost", JSON.stringify(scene))
+}, clientRefreshRate)
+
+
 var scene = new THREE.Scene()
 
 var camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000) 
