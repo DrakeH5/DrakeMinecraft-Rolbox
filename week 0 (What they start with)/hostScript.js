@@ -23,14 +23,20 @@ var material = new THREE.MeshLambertMaterial({color: "blue"})
 var cube1 = new THREE.Mesh(geometry, material)
 cube1.rotation.y = 45;
 
-scene.add(cube1)
-
+scene.add(cube1);
 
 var geometry = new THREE.BoxGeometry(30, 1, 30); 
 var material = new THREE.MeshLambertMaterial({color: 0xFFCC00}); 
 var ground = new THREE.Mesh(geometry, material);
 ground.position.y = -1
 scene.add(ground);
+
+
+var geometry = new THREE.BoxGeometry(30, 1, 30); 
+var material = new THREE.MeshLambertMaterial({color: 0xFFCC00}); 
+var ground = new THREE.Mesh(geometry, material);
+ground.position.z = -40
+scene.add(ground2);
 
 
 
@@ -154,7 +160,7 @@ scene.add(hostPlayer);
 
 
 var geometry = new THREE.BoxGeometry(0.3, 0.7, 0.3); 
-var material = new THREE.MeshLambertMaterial({color: "blue"}); 
+var material = new THREE.MeshLambertMaterial({color: "red"}); 
 var otherPlayer = new THREE.Mesh(geometry, material);
 scene.add(otherPlayer);
 socket.on("updatedPlayerPos", data => {
