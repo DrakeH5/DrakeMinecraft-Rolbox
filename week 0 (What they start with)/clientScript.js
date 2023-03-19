@@ -82,4 +82,5 @@ document.body.onmousemove = function(evt) {
       this.camera = camera;
       this.camera.position.y-=1;
     }
+    socket.emit("playerPos", camera.position)
   };

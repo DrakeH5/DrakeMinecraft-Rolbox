@@ -35,7 +35,7 @@ var cube1 = new THREE.Mesh(geometry, material);
 cube1.rotation.y = 45;
 scene.add(cube1);
 
-<<<<<<< HEAD
+
 
 var geometry = new THREE.BoxGeometry(30, 1, 30); 
 var material = new THREE.MeshLambertMaterial({color: 0xFFCC00}); 
@@ -100,3 +100,25 @@ light.position.set(10, 12, 25)
 scene.add(light)
 
 renderer.render(scene, camera)
+
+
+
+var geometry = new THREE.BoxGeometry(0.3, 0.7, 0.3); 
+var material = new THREE.MeshLambertMaterial({color: "red"}); 
+var hostPlayer = new THREE.Mesh(geometry, material);
+hostPlayer.position.x = camera.position.x
+hostPlayer.position.y = camera.position.y
+hostPlayer.position.z = camera.position.z
+scene.add(hostPlayer);
+
+
+
+var geometry = new THREE.BoxGeometry(0.3, 0.7, 0.3); 
+var material = new THREE.MeshLambertMaterial({color: "blue"}); 
+var otherPlayer = new THREE.Mesh(geometry, material);
+scene.add(otherPlayer);
+socket.on("updatedPlayerPos", data => {
+otherPlayer.position.x = data.x
+otherPlayer.position.y = data.y
+otherPlayer.position.z = data.z
+})
