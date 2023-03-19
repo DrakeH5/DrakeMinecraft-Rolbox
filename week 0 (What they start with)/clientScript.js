@@ -1,6 +1,10 @@
 const socket = io("ws://204.110.223.239:8080")
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ca02b7605bbe7c29445e52c1374d9f2b44bfdb88
 var camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000) //create a camera
 camera.position.z = 5;
 
@@ -83,4 +87,10 @@ document.body.onmousemove = function(evt) {
       this.camera.position.y-=1;
     }
     socket.emit("playerPos", camera.position)
+<<<<<<< HEAD
   };
+=======
+  };
+
+  
+>>>>>>> ca02b7605bbe7c29445e52c1374d9f2b44bfdb88
